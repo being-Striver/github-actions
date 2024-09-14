@@ -1,0 +1,28 @@
+name: Parallel jobs workflow
+on: [push]
+jobs:
+    on-push-workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Hello World
+              run: echo "hello world"
+            - name: Print bye
+              run: echo "bye"
+    
+    parallel-jobs-macos:
+        runs-on: macos-latest
+        steps:
+            - name: View SW version
+              run: sw_vers
+    
+    dependent-jobs:
+        runs-on: windows-latest
+
+        #in order to define dependency, you have to use keyword "needs" which will accept list of job ids.
+        needs: [on-push-workflow]
+        steps:
+          - name: print a string
+            run: Write-Output "Windows String"
+          - name: Error
+            run: DoesNotExists
+        
