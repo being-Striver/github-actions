@@ -1,0 +1,13 @@
+name: On Push workflow
+on: [push]
+jobs: 
+    on-push-workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print a string
+              run: echo "hello World"
+            - name: multiline command
+              run: |
+                python --version
+                node -v
+                npm -v
