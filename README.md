@@ -58,3 +58,27 @@ Github Workflow UI:
 command to check workflow using cli : gh workflow view "First Workflow".
 
 NOTE: You can disable workflow using UI. It will prevent from running whenever there is a push on repository.
+
+You can enable or disable workflow using cli. command: gh enable workflow "name of workflow"
+
+
+Debugging in github actions:
+----------------------------------
+You can add more logs using variables and secret by adding new variable to repository. You can go to settings where you can add variables and secrets in order to get more logs.
+
+SKipping the workflow:
+----------------------------
+Sometimes you might want to skip workflow whenever there is a push to repository.Sometimes you might want to skip your workflow for specific commit.
+Workflows that would otherwise be triggered using on: push or on: pull_request won't be triggered if you add any of the following strings to the commit message in a push, or the HEAD commit of a pull request:
+ - [skip ci]
+ - [ci skip]
+ - [no ci]
+ - [skip actions]
+ - [actions skip]
+
+
+Note: Skip instructions only apply to the push and pull_request events. For example, adding [skip ci] to a commit message won't stop a workflow that's triggered on: pull_request_target from running.
+
+#Introduction to workflow commands:
+------------------------------------------
+Github actions can communicate with the runner machine running your job. 
