@@ -1,0 +1,20 @@
+name: First Workflow
+
+#Controls when the workflow will run.
+
+
+# workflow_dispatch: Allows you to run this workflow manually from the Actions tab
+on: workflow_dispatch
+
+jobs: 
+    #give the first job name
+    first-job:
+        #now we have to provide runner on which job will execute.
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Greeting
+              run: echo "hello world"
+            - name: print goodbye
+              run: echo "Good Bye"
+
+     
