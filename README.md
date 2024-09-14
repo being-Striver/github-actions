@@ -51,4 +51,10 @@ Available events:
    - repository_dispatch: REST API requests triggers workflow
    - schedule: workflow is scheduled
    - workflow_call: can be called by other workflow
-- 
+
+
+Github Workflow UI:
+--------------------------
+command to check workflow using cli : gh workflow view "First Workflow".
+
+NOTE: You can disable workflow using UI. It will prevent from running whenever there is a push on repository.
