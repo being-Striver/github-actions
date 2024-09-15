@@ -1,0 +1,11 @@
+name: Understanding of github ref
+on: [push]
+jobs: 
+    example-of-github-ref:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout example
+              uses: actions/checkout@v3
+            
+            - name: printing github ref
+              run: echo "The Github ref is $GITHUB_REF"
