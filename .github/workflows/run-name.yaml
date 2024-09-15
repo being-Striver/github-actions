@@ -1,0 +1,13 @@
+name: Run Name Example
+run-name: ${{github.ref_name}}
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print hell world
+              run: echo "Hello World"

@@ -104,3 +104,47 @@ GITHUB_REF is a predefined environment variable in GitHub Actions that refers to
 # what is actions/checkout@v3?
 ------------------------------------------
 actions/checkout@v3 is the third major version of the checkout action in GitHub Actions, used to check out (or clone) your repository code onto the runner (the virtual machine) where your workflow is executed. This allows your workflow to access the source code of the repository so that it can run builds, tests, or deployments.
+
+
+# Expressions and context
+------------------------------------
+Expressions in GitHub Actions are used to evaluate and compute values within workflow files. They allow you to create conditional logic (like if statements) and compute dynamic values.
+
+Syntax: Expressions are enclosed in ${{ <expression>}}. Inside this syntax, you can use variables, functions, and operators.
+
+An expression can be any combination of literal values, references to a context, or functions. You can combine literals, context references, and functions using operators.
+
+Common Expression Functions:
+- success(): Returns true if the previous step succeeded.
+- failure(): Returns true if the previous step failed.
+- contains(): Checks if a string contains a substring.
+- startsWith(): Checks if a string starts with a specific prefix.
+
+
+Contexts provide information about workflow events, runner environments, jobs, steps, and more. They are key-value pairs that give you access to metadata and allow you to use them in expressions.
+
+github contexts:
+- ${{ github.repository }}: The name of the repository (owner/repo).
+- ${{ github.event_name }}: The event that triggered the workflow (e.g., push, pull_request).
+- ${{ github.actor }}: The GitHub username who initiated the workflow.
+- ${{ github.ref }}: The branch or tag that triggered the workflow.
+
+
+env contexts:
+- ${{ env.MY_ENV_VAR }}: Access the custom environment variable MY_ENV_VAR.
+
+job contexts:
+- ${{ env.MY_ENV_VAR }}: Access the custom environment variable MY_ENV_VAR.
+
+Runner contexts:
+- ${{ runner.os }}: The operating system of the runner (e.g., Linux, Windows, macOS).
+
+steps contexts:
+- ${{ steps.step_id.outputs.output_name }}: Get the output from a specific step.
+
+matrix contexts:
+- ${{ matrix.os }}: The operating system defined in the matrix for this run
+
+
+
+
