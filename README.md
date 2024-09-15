@@ -99,3 +99,8 @@ GITHUB_REF is a predefined environment variable in GitHub Actions that refers to
 ------------------------------------------------
 - Use GITHUB_SHA when you need to reference a specific commit.
 - Use GITHUB_REF when you need to reference the branch or tag that triggered the workflow.
+
+
+# what is actions/checkout@v3?
+------------------------------------------
+actions/checkout@v3 is the third major version of the checkout action in GitHub Actions, used to check out (or clone) your repository code onto the runner (the virtual machine) where your workflow is executed. This allows your workflow to access the source code of the repository so that it can run builds, tests, or deployments.
