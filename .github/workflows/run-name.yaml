@@ -1,5 +1,9 @@
 name: Run Name Example
-run-name: ${{github.event_name}} 
+
+#PR #: This is a static string that precedes the pull request number. It helps to format the output clearly, indicating that the 
+#number is related to a pull request
+
+run-name: PR #${{github.event.pull_request.number}} by ${{github.actor}}
 on:
     push:
         branches:
