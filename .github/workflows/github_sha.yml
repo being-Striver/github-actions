@@ -1,11 +1,11 @@
-name: Understanding of github_sha 
+name: Understanding of github sha 
 on: [push]
 jobs:
     github-sha-example:
         runs-on: ubuntu-sha
         steps:
             - name: printing github_sha
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
 
             - name: display the commit sha
               run: echo "The commit SHA is $GITHUB_SHA"
