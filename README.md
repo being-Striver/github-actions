@@ -82,3 +82,20 @@ Note: Skip instructions only apply to the push and pull_request events. For exam
 #Introduction to workflow commands:
 ------------------------------------------
 Github actions can communicate with the runner machine running your job. 
+
+
+
+
+# GITHUB_SHA
+-----------------------
+GITHUB_SHA is a predefined environment variable in GitHub Actions that contains the commit SHA (Secure Hash Algorithm) of the commit that triggered the workflow. A commit SHA is a unique identifier (hash) that Git generates for each commit, and it helps you pinpoint the exact state of the code at the time the workflow is run.
+
+
+# GITHUB_REF
+--------------------------
+GITHUB_REF is a predefined environment variable in GitHub Actions that refers to the Git reference of the event that triggered the workflow. This reference can be a branch, tag, or a pull request reference.
+
+# Difference between GITHUB_SHA and GITHUB_REF
+------------------------------------------------
+- Use GITHUB_SHA when you need to reference a specific commit.
+- Use GITHUB_REF when you need to reference the branch or tag that triggered the workflow.
