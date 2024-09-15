@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-sha
         steps:
             - name: printing github_sha
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: display the commit sha
               run: echo "The commit SHA is $GITHUB_SHA"
