@@ -1,5 +1,5 @@
 name: Run Name Example
-run-name: ${{github.ref_name + " " + github.event_name + " " + github_actor}} 
+run-name: ${{github.event_name}} 
 on:
     push:
         branches:
