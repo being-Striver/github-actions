@@ -146,5 +146,6 @@ matrix contexts:
 - ${{ matrix.os }}: The operating system defined in the matrix for this run
 
 
-
+By using **IF** key, we can control the workflow. We can define **IF** key at job level and step level.
+Whatever inside **IF** key, github will evaluate it as an expression. You can either put "${{}}" or you can skip it.
 

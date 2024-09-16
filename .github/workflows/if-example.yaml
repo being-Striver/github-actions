@@ -1,0 +1,28 @@
+name: Expressions and Contexts
+on: [push, pull_request, issues, workflow_dispatch]
+jobs:
+    Using-expressions-and-contexts:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+            - name: Expressions
+              id: expressions
+              run: |
+                echo ${{1}}
+                echo ${{'This is Sudhanshu'}}
+                echo ${{null}}
+                echo ${{true}}
+                echo ${{1>2}}
+                echo ${{'string' == 'String'}}
+                echo ${{true && false}}
+                echo ${{true || (true && false)}}
+
+            - name: Contexts
+              id: contexts
+              run: |
+               echo '${{toJson(github)}}'
+               echo '${{toJson(job)}}'
+               echo '${{toJson(steps)}}'
+               echo '${{toJson(secrets)}}'
+               echo '${{toJson(runner)}}'
+    
