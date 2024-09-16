@@ -1,0 +1,33 @@
+name: Expressions and Contexts
+on: [push, pull_request, issues, workflow_dispatch]
+run-name: "Expressions and Contexts by @${{ github.actor}}, event:${{github.event_name}}"
+jobs:
+    runs-on-issues-and-prs:
+        runs-on: ubuntu-latest
+        # if: github.event_name == 'issues' || github.event_name == 'pull_request'
+
+        # The below command explanation: This function converts the JSON string representation of an array 
+        # ('["issues", "pull_request"]') into an actual array.So, the string '["issues", "pull_request"]' becomes an array of 
+        # strings ["issues", "pull_request"]
+        if: contains(fromJson('["issues", "pull_request"]'),github.event_name)
+        steps:
+            - name: Run only if issue has a bug label
+              if: contains(github.event.issue.labels.*.name, 'bug')
+              run: echo ${{ join(github.event.issue.labels.*.name, ', ')}}
+
+    
+    using-expression-and-contexts:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+            - name: Expressions
+              if: 
+              run: |
+                echo ${{1}}
+                echo ${{'This is Sudhanshu'}}
+                echo ${{null}}
+                echo ${{true}}
+                echo ${{1>2}}
+                echo ${{'string' == 'String'}}
+                echo ${{true && false}}
+                echo ${{true || (true && false)}}
