@@ -1,0 +1,16 @@
+name: Status Check Function1
+on: [push]
+jobs:
+    job-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: step 1
+              run: sleep 20
+            - name: step 2
+              id: step-2
+              run: exit 1
+            - name: run on failure
+            #Here is the catch. if you write only steps.step.conclusion == 'failure, it means last step is success. 
+            #To override success(), please use failure() status.
+              if: failure() && steps.step-2.conclusion == 'failure'
+              run: echo 'Step 2 failed'
