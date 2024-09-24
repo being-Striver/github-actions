@@ -152,3 +152,22 @@ Whatever inside **IF** key, github will evaluate it as an expression. You can ei
 For using more expressions, its better to refer official doc where all listed expressions are given.
 
 
+
+## Default and custom environment variables:
+---------------------------------------------------
+
+
+
+
+
+
+
+
+# job artifacts and outputs
+-------------------------------------
+Artifacts allow you to share data between jobs in a workflow and store data once that workflow has completed. An artifact is a file or collection of files produced during a workflow run. For example, you can use artifacts to save your build and test output after a workflow run has ended. All actions and workflows called within a run have write access to that run's artifacts.
+
+Github provides two actions that you can use to upload and download build artifacts.
+
+Artifacts and caching are similar because they provide the ability to store files on GitHub, but each feature offers different use cases and cannot be used interchangeably.
+
