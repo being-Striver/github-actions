@@ -1,0 +1,12 @@
+name: GITHUB ENV
+on: [push]
+jobs:
+    github-env-examples:
+        runs-on: ubuntu-latest
+        steps:
+            - name: log env var
+              run: echo $GITHUB_REF
+            - name: custom variable declaration
+              run: echo "{date}= $(date)" >> "GITHUB_ENV"
+            - name: log custom variables
+              run: echo $date

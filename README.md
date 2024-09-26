@@ -162,6 +162,54 @@ ${{github.ref}}  -- this is context. this will be sent to runner machine after e
 $GITHUB_REF  -- this is env variable. it will be evaluated on runner machine.
 
 
+During the execution of workflow, runner machine generates some temporary files that can be used to perform certain actions.
+You can make an environment variable available to any subsequent steps in a workflow job by defining or updating the environment variable and writing this to the GITHUB_ENV environment file. The step that creates or updates the environment variable does not have access to the new value, but all subsequent steps in a job will have access.
+
+echo "{environment_variable_name}={value}" >> "$GITHUB_ENV"
+
+
+You can use multiline strings.You can use delimeter syntax.
+{name}<<{delimiter}
+{value}
+{delimiter}
+
+example:
+  steps:
+  - name: Set the value in bash
+    id: step_one
+    run: |
+      {
+        echo 'JSON_RESPONSE<<EOF'
+        curl https://example.com
+        echo EOF
+      } >> "$GITHUB_ENV"
+
+
+Setting an output parameter:
+   echo "{name}={value}" >> "$GITHUB_OUTPUT"
+
+Adding a job summary:
+- echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
+
+
+Multiline markdown content:
+For multiline Markdown content, you can use >> to continuously append content for the current step
+- name: Generate list using Markdown
+  run: |
+    echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
+    echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+    echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
+    echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
+    echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+
+
+
+
+
+
+
+
+
 
 
 
