@@ -155,7 +155,11 @@ For using more expressions, its better to refer official doc where all listed ex
 
 ## Default and custom environment variables:
 ---------------------------------------------------
+What is the difference between env variables and context?
+- ENV variables are evaluated on runner machine while context will be evaluated before workflow sending to runner machine.
 
+${{github.ref}}  -- this is context. this will be sent to runner machine after evaluating.
+$GITHUB_REF  -- this is env variable. it will be evaluated on runner machine.
 
 
 
