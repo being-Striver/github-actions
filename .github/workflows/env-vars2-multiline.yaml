@@ -1,0 +1,23 @@
+name: Multi-line Env Vars
+on: [push]
+jobs:
+    Multi-line-strings-env-vars:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set an Env Var
+              run: |
+                echo "DATE=$(date)" >> "$GITHUB_ENV"
+            - name: Set multi line env variables
+              run: |
+                DELIMITER=1234
+                echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
+                echo "Here is a random joke:" >> "$GITHUB_ENV"
+                curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
+                echo "" >> "$GITHUB_ENV" 
+                echo "$DELIMITER" >> "$GITHUB_ENV"
+
+            - name: Print random env variable
+              run: |
+                echo $DATE
+                echo $RANDOM_JOKE
+                
