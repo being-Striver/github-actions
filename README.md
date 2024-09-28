@@ -204,6 +204,18 @@ For multiline Markdown content, you can use >> to continuously append content fo
 
 
 
+# Configurations variables and secrets:
+-----------------------------------------------
+In the previous section, we have learned how to define env variables at workflow level.What if we need same environment variable in another workflow.This is where configuration variables come into picture. Configuration variables can be accessible throughout the repository or even for multiple repository throughout organization. It means whatever workflow files are there, they would be able to access it.
+You can declare it in github environments and secrets.
+These can be defined at two level.
+- repo level
+- org level
+- at environment level
+
+
+
+
 
 
 
