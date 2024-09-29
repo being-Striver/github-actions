@@ -271,3 +271,6 @@ The matrix strategy in GitHub Actions allows you to define a matrix of values th
 ## Defining a matrix in your github actions workflow
 --------------------------------------------------------
 The key, strategy.matrix is defined below the job ID you're currently defining. Conceptually, the matrix strategy is a dictionary of keys and values that you want to run your job against. The keys are the names of the variables you want to use in your job, and the values are the different configurations you want to run your job against.
+
+## Defining the maximum number of jobs to run in parallel.
+ Yes we can do that using **strategy.max-parallel** method.
