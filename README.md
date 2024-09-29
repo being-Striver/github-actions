@@ -235,3 +235,39 @@ Github provides two actions that you can use to upload and download build artifa
 
 Artifacts and caching are similar because they provide the ability to store files on GitHub, but each feature offers different use cases and cannot be used interchangeably.
 
+
+
+# Advanced github actions features
+---------------------------------------
+## What's timeout-minutes?
+timeout-minutes is the maximum number of minutes to let a job run before GitHub automatically cancels it.
+The default value is 360.
+
+## Why should you set timeout-minutes?
+The default value of timeout-minutes is 360, but this is too long for most GitHub Actions jobs.
+Even if processes are stuck for some reason, jobs keeps running until the timeout.
+This wastes resources uselessly.
+By setting timeout-minutes properly, you can notice the issue and resolve it by retrying jobs quickly.
+
+## What is continue-on-error?
+The **continue-on-error** keyword is used to allow a job or a step to continue running even if it encounters an error. Normally, if a step fails, the job and workflow stop executing. By setting continue-on-error: true, the workflow will not fail immediately, and the subsequent steps or jobs will continue running.
+
+## use cases:
+-------------------------
+This feature is helpful when you want to proceed with the workflow even if a non-critical step or job fails. 
+You can use continue-on-error at both the job level and the step level.
+
+1. You may want to allow non-critical tests(like integration tests) to fail but still proceed with deployment.
+2. If you run a linter or code style check and don't want the failure to block the build.
+3. If you use **needs** to define dependencies between jobs, the dependent job will still run if the upstream job fails but has **conitnue-on-error: true**.
+
+
+## matrix:
+-----------------
+
+## What is github actions matrix strategy?
+The matrix strategy in GitHub Actions allows you to define a matrix of values that will run the same job multiple times with different configurations. This is useful when you want to run the same job with different versions of a language, different operating systems, or different inputs based on what your job is doing.
+
+## Defining a matrix in your github actions workflow
+--------------------------------------------------------
+The key, strategy.matrix is defined below the job ID you're currently defining. Conceptually, the matrix strategy is a dictionary of keys and values that you want to run your job against. The keys are the names of the variables you want to use in your job, and the values are the different configurations you want to run your job against.
