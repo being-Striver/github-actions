@@ -274,3 +274,10 @@ The key, strategy.matrix is defined below the job ID you're currently defining. 
 
 ## Defining the maximum number of jobs to run in parallel.
  Yes we can do that using **strategy.max-parallel** method.
+
+
+NOTE: If any one of the job is failed, entire workflow will fail. We can handle it using continue-on-error.If any progress or pending job will be marked as failed.
+
+
+## Handling failures using fail-fast method:
+If the **strategy.fail-fast** is true, GitHub cancels all in-progress and queued jobs in the matrix if any job in the matrix fails. Otherwise, all other jobs run if the strategy.fail-fast is set to false.
