@@ -273,7 +273,7 @@ The matrix strategy in GitHub Actions allows you to define a matrix of values th
 The key, strategy.matrix is defined below the job ID you're currently defining. Conceptually, the matrix strategy is a dictionary of keys and values that you want to run your job against. The keys are the names of the variables you want to use in your job, and the values are the different configurations you want to run your job against.
 
 ## Defining the maximum number of jobs to run in parallel.
- Yes we can do that using **strategy.max-parallel** method.
+Yes we can do that using **strategy.max-parallel** method.
 
 
 NOTE: If any one of the job is failed, entire workflow will fail. We can handle it using continue-on-error.If any progress or pending job will be marked as failed.
@@ -281,3 +281,16 @@ NOTE: If any one of the job is failed, entire workflow will fail. We can handle 
 
 ## Handling failures using fail-fast method:
 If the **strategy.fail-fast** is true, GitHub cancels all in-progress and queued jobs in the matrix if any job in the matrix fails. Otherwise, all other jobs run if the strategy.fail-fast is set to false.
+
+
+## Including and excluding in matrix:
+We can add more or remove some items from existing matrix.
+you need to add or expand an existing configuration when there is a value update of an existing variable. If so, adding the include keyword will do the trick, where its value is a list of objects in key:value pairs.
+
+If none of the key: value pairs for an object in the include list overwrite any of the original matrix values, the object’s key: value pairs are added to all matrix combinations for that item.
+
+A new matrix combination is made if the object cannot be added to existing ones. Remember, though, that while newly-inserted matrix values cannot be overwritten, the previous ones can be.
+
+
+In our case, if we add new item to our combinations, if that item is not going to override the original value, it is not going to be added as an new item.However, it is going to be merged with already existing items.
+
